@@ -1,0 +1,27 @@
+{
+    "name": "webmonet/elk-logger",
+    "description": "Laravel Monolog channel that ships logs to Elasticsearch, plus a request-logging middleware.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "elasticsearch/elasticsearch": "^8.0",
+        "illuminate/contracts": "^10.0|^11.0",
+        "illuminate/http": "^10.0|^11.0",
+        "illuminate/support": "^10.0|^11.0",
+        "monolog/monolog": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webmonet\\ElkLogger\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webmonet\\ElkLogger\\ElkLoggerServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}

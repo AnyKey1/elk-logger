@@ -3,6 +3,7 @@
     "description": "Laravel Monolog channel that ships logs to Elasticsearch, plus a request-logging middleware.",
     "type": "library",
     "license": "MIT",
+    "version": "1.0.0",
     "require": {
         "php": "^8.2",
         "elasticsearch/elasticsearch": "^8.0",

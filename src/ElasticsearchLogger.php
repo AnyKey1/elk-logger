@@ -3,6 +3,7 @@
 namespace Webmonet\ElkLogger;
 
 use Elastic\Elasticsearch\ClientBuilder;
+use Monolog\Handler\BufferHandler;
 use Monolog\Handler\ElasticsearchHandler;
 use Monolog\Level;
 use Monolog\Logger;
@@ -43,6 +44,20 @@ class ElasticsearchLogger
             $this->resolveLevel($settings['level'] ?? Level::Info),
             true,
         );
+
+        if (!empty($settings['async'])) {
+            $bufferLimit = (int) ($settings['buffer_limit'] ?? 0);
+            $flushOnOverflow = (bool) ($settings['flush_on_overflow'] ?? false);
+            $level = $this->resolveLevel($settings['level'] ?? Level::Info);
+
+            $handler = new BufferHandler(
+                $handler,
+                $bufferLimit,
+                $level,
+                true,
+                $flushOnOverflow,
+            );
+        }
 
         $appName = $settings['app_name'] ?? 'app';
         $environment = $settings['environment'] ?? 'production';

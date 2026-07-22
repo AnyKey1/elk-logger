@@ -38,6 +38,9 @@ Driven by env variables (see `config/elk-logger.php`):
 | `ELASTICSEARCH_INDEX_DATE_FORMAT` | `Y_m_d` | `date()` format suffix |
 | `ELASTICSEARCH_LOG_LEVEL` | `info` | Minimum Monolog level |
 | `ELASTICSEARCH_IGNORE_ERRORS` | `true` | Suppress handler errors |
+| `ELK_LOGGER_ASYNC` / `ELASTICSEARCH_ASYNC` | `false` | Enable asynchronous (buffered) log sending |
+| `ELK_LOGGER_BUFFER_LIMIT` / `ELASTICSEARCH_BUFFER_LIMIT` | `0` | Max buffered logs (0 = unlimited, send all on shutdown) |
+| `ELK_LOGGER_FLUSH_ON_OVERFLOW` / `ELASTICSEARCH_FLUSH_ON_OVERFLOW` | `false` | Flush buffer to ELK immediately when buffer limit is reached |
 | `ELK_LOGGER_CHANNEL` | `elasticsearch` | Log channel name registered in `config/logging.php` |
 | `ELK_LOGGER_DURATION_HEADER` | `Duration` | Response header read for `db-duration` |
 | `ELK_LOGGER_REQUEST_MESSAGE` | `Incoming Request` | Log message used by request middleware |

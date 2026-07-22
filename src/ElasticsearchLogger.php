@@ -10,14 +10,8 @@ use Monolog\Logger;
 
 class ElasticsearchLogger
 {
-    private static ?Logger $instance = null;
-
     public function __invoke(array $config = []): Logger
     {
-        if (self::$instance !== null) {
-            return self::$instance;
-        }
-
         $settings = array_replace_recursive(
             (array) config('elk-logger', []),
             $config,
@@ -72,7 +66,7 @@ class ElasticsearchLogger
 
         $logger->setHandlers([$handler]);
 
-        return self::$instance = $logger;
+        return $logger;
     }
 
     private function buildIndexName(array $settings): string

@@ -16,6 +16,10 @@ return [
 
     'ignore_errors' => (bool) env('ELASTICSEARCH_IGNORE_ERRORS', true),
 
+    'async' => (bool) env('ELK_LOGGER_ASYNC', env('ELASTICSEARCH_ASYNC', false)),
+    'buffer_limit' => (int) env('ELK_LOGGER_BUFFER_LIMIT', env('ELASTICSEARCH_BUFFER_LIMIT', 0)),
+    'flush_on_overflow' => (bool) env('ELK_LOGGER_FLUSH_ON_OVERFLOW', env('ELASTICSEARCH_FLUSH_ON_OVERFLOW', false)),
+
     'app_name' => env('APP_NAME', 'app'),
     'environment' => env('APP_ENV', 'production'),
 
